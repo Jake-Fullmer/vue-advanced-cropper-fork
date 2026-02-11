@@ -8,6 +8,12 @@ export default {
 			type: String,
 		},
 	},
+	data() {
+		return {
+			touches: [],
+			hovered: false,
+		};
+	},
 	beforeMount() {
 		window.addEventListener('mouseup', this.onMouseUp, { passive: false });
 		window.addEventListener('mousemove', this.onMouseMove, { passive: false });
@@ -24,8 +30,6 @@ export default {
 		if (!this.$refs.draggable) {
 			throw new Error('You should add ref "draggable" to your root element to use draggable mixin');
 		}
-		this.touches = [];
-		this.hovered = false;
 	},
 	methods: {
 		onMouseOver() {
